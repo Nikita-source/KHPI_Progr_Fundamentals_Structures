@@ -1,11 +1,11 @@
-/*
-Приклад 7
-Створити структуру "Ферма":
+п»ї/*
+РџСЂРёРєР»Р°Рґ 7
+РЎС‚РІРѕСЂРёС‚Рё СЃС‚СЂСѓРєС‚СѓСЂСѓ "Р¤РµСЂРјР°":
 - ID
-- вид тварини
-- вага
-На фермі 20 тварин, кролики та індики.
-Написати функцію знаходження найважчого кролика.
+- РІРёРґ С‚РІР°СЂРёРЅРё
+- РІР°РіР°
+РќР° С„РµСЂРјС– 20 С‚РІР°СЂРёРЅ, РєСЂРѕР»РёРєРё С‚Р° С–РЅРґРёРєРё.
+РќР°РїРёСЃР°С‚Рё С„СѓРЅРєС†С–СЋ Р·РЅР°С…РѕРґР¶РµРЅРЅСЏ РЅР°Р№РІР°Р¶С‡РѕРіРѕ РєСЂРѕР»РёРєР°.
 */
 
 #include <iostream>	// std::cout
@@ -14,9 +14,9 @@
 
 using namespace std;
 
-const int N = 20;		// Кількість тварин
+const int N = 20;		// РљС–Р»СЊРєС–СЃС‚СЊ С‚РІР°СЂРёРЅ
 
-// Визначаємо новий перераховуваний тип Animals
+// Р’РёР·РЅР°С‡Р°С”РјРѕ РЅРѕРІРёР№ РїРµСЂРµСЂР°С…РѕРІСѓРІР°РЅРёР№ С‚РёРї Animals
 enum Animals
 {
 	ANIMAL_RABBIT,
@@ -30,7 +30,7 @@ struct FarmAnimal
 	float weight;
 };
 
-// Функція заповнення масиву тваринами
+// Р¤СѓРЅРєС†С–СЏ Р·Р°РїРѕРІРЅРµРЅРЅСЏ РјР°СЃРёРІСѓ С‚РІР°СЂРёРЅР°РјРё
 void inputAnimails(FarmAnimal animals[], int N)
 {
 	for (int i = 0; i < N; i++)
@@ -40,8 +40,8 @@ void inputAnimails(FarmAnimal animals[], int N)
 		animals[i].weight = float(rand() % 50) / 10 + 1;
 
 		cout << i << ": " << "id=" << animals[i].id << " ";
-		if (animals[i].type == ANIMAL_RABBIT) cout << "Кролик";
-		else cout << "Індик";
+		if (animals[i].type == ANIMAL_RABBIT) cout << "РљСЂРѕР»РёРє";
+		else cout << "Р†РЅРґРёРє";
 		cout << " " << animals[i].weight << "\n";
 	}
 }
@@ -51,7 +51,7 @@ int findRabbit(FarmAnimal animals[], int N)
 	int maxWeight = 0;
 	int maxWaightRabbitIndex = 0;
 
-	// Пошук кролика з максимальною вагою
+	// РџРѕС€СѓРє РєСЂРѕР»РёРєР° Р· РјР°РєСЃРёРјР°Р»СЊРЅРѕСЋ РІР°РіРѕСЋ
 	for (int i = 0; i < N; i++)
 	{
 		if (animals[i].weight > maxWeight && animals[i].type == ANIMAL_RABBIT)
@@ -75,14 +75,14 @@ int main()
 
 	while (true)
 	{
-		// Завдання вихідних даних
+		// Р—Р°РІРґР°РЅРЅСЏ РІРёС…С–РґРЅРёС… РґР°РЅРёС…
 		inputAnimails(animals, N);
 
-		// Пошук кролика з максимальною вагою
+		// РџРѕС€СѓРє РєСЂРѕР»РёРєР° Р· РјР°РєСЃРёРјР°Р»СЊРЅРѕСЋ РІР°РіРѕСЋ
 		maxWaightRabbitIndex = findRabbit(animals, N);
 
-		// Виведення інформації
-		cout << "Кролик з максимальною вагою : " << "id=" << animals[maxWaightRabbitIndex].id << " "
+		// Р’РёРІРµРґРµРЅРЅСЏ С–РЅС„РѕСЂРјР°С†С–С—
+		cout << "РљСЂРѕР»РёРє Р· РјР°РєСЃРёРјР°Р»СЊРЅРѕСЋ РІР°РіРѕСЋ : " << "id=" << animals[maxWaightRabbitIndex].id << " "
 			<< "\n";
 
 		system("pause");
