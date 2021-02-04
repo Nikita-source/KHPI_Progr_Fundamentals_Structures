@@ -1,17 +1,22 @@
 /*
-Пример 6
-На ферме 250 животных, кролики и индюки. У каждого есть свой ID.
-Найти самого тяжелого кролика.
+Приклад 7
+Створити структуру "Ферма":
+- ID
+- вид тварини
+- вага
+На фермі 20 тварин, кролики та індики.
+Написати функцію знаходження найважчого кролика.
 */
 
 #include <iostream>	// std::cout
 #include <string>	// std::string, std::to_string
+#include <Windows.h>
 
 using namespace std;
 
-const int N = 20;		// Количество животных
+const int N = 20;		// Кількість тварин
 
-// Определяем новый перечисляемый тип Animals
+// Визначаємо новий перераховуваний тип Animals
 enum Animals
 {
 	ANIMAL_RABBIT,
@@ -25,7 +30,7 @@ struct FarmAnimal
 	float weight;
 };
 
-// Функци заполнения массива животными
+// Функція заповнення масиву тваринами
 void inputAnimails(FarmAnimal animals[], int N)
 {
 	for (int i = 0; i < N; i++)
@@ -36,7 +41,7 @@ void inputAnimails(FarmAnimal animals[], int N)
 
 		cout << i << ": " << "id=" << animals[i].id << " ";
 		if (animals[i].type == ANIMAL_RABBIT) cout << "Кролик";
-		else cout << "Индюк";
+		else cout << "Індик";
 		cout << " " << animals[i].weight << "\n";
 	}
 }
@@ -46,7 +51,7 @@ int findRabbit(FarmAnimal animals[], int N)
 	int maxWeight = 0;
 	int maxWaightRabbitIndex = 0;
 
-	// Поиск кролика с максимальным весом
+	// Пошук кролика з максимальною вагою
 	for (int i = 0; i < N; i++)
 	{
 		if (animals[i].weight > maxWeight && animals[i].type == ANIMAL_RABBIT)
@@ -61,7 +66,8 @@ int findRabbit(FarmAnimal animals[], int N)
 
 int main()
 {
-	setlocale(LC_ALL, "ru");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
 
 	int maxWaightRabbitIndex = 0;
 
@@ -69,14 +75,14 @@ int main()
 
 	while (true)
 	{
-		// Задание исходных данных
+		// Завдання вихідних даних
 		inputAnimails(animals, N);
 
-		// Поиск кролика с максимальным весом
+		// Пошук кролика з максимальною вагою
 		maxWaightRabbitIndex = findRabbit(animals, N);
 
-		// Вывод информации
-		cout << "Кролик с максимальным весом : " << "id=" << animals[maxWaightRabbitIndex].id << " "
+		// Виведення інформації
+		cout << "Кролик з максимальною вагою : " << "id=" << animals[maxWaightRabbitIndex].id << " "
 			<< "\n";
 
 		system("pause");

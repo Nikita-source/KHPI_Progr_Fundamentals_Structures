@@ -1,9 +1,11 @@
 /*
-Пример 1
-Структура - Книга (автор, название, год)
-Сделать библиотеку
-Кол-во книг 100
-Напечатать авторов и названия книг, год издания которых раньше 1900
+Приклад 2
+Створити структуру "Книга" 
+- автор
+- назва
+- рік
+Написати функцію заповнення бібліотеки 100 книгами.
+Надрукувати авторів і назви книг, рік видання яких раніше 1900
 */
 #include <iostream>	// std::cout
 #include <string>	// std::string, std::to_string
@@ -19,7 +21,7 @@ struct Book
 	unsigned short year;
 };
 
-// Функци заполнения библиотеки (создание массива книг)
+// Функція заповнення бібліотеки (створення масиву книг) 
 void inputLibrary(Book lib[], int lib_size)
 {
 	for (int i = 0; i < lib_size; i++)
@@ -31,7 +33,7 @@ void inputLibrary(Book lib[], int lib_size)
 
 }
 
-// Функция печати книг, год издания которых раньше 1900
+// Функція друку книг, рік видання яких раніше 1900
 void printBooks(Book lib[], int lib_size, int age_less_than)
 {
 	int n = 0;
@@ -48,15 +50,14 @@ void printBooks(Book lib[], int lib_size, int age_less_than)
 
 int main()
 {
-	setlocale(LC_ALL, "ru");
 
-	Book Library[SIZE];	// Объявление массива книг
+	Book Library[SIZE];	// Оголошення масиву книг
 
 	while (true)
 	{
-		inputLibrary(Library, SIZE);	// Создание массива книг
+		inputLibrary(Library, SIZE);	// Створення масиву книг
 
-		printBooks(Library, SIZE, 1900);	// Печать книг, удовлетворяющих требованиям
+		printBooks(Library, SIZE, 1900);	// Друк книг, які відповідають вимогам
 
 
 		system("pause");

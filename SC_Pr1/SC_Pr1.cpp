@@ -1,12 +1,13 @@
 /*
-Пример 1 по материалам Simple Code на тему структуры и перечисления (enum)
+Приклад 1 за матеріалами Simple Code на тему структури і перерахування (enum)
 https://www.youtube.com/watch?v=BMmbQ81lQd0&list=PLQOaTSbfxUtCrKs0nicOg2npJQYSPGO9r&index=145&t=0s
 
-Создать структуру хранения имени и состояния компьютера (включен, выключен, спит),
-задать состояние, и вывести на печать
+Створити структуру зберігання імені та стану комп'ютера (включений, вимкнений, спить),
+задати стан, і вивести на друк
 
 */
 #include <iostream>	// std::cout
+#include <Windows.h>
 
 using namespace std;
 
@@ -23,25 +24,26 @@ struct PC
 
 int main()
 {
-	setlocale(LC_ALL, "ru");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
 
-	PC pc;							// Создание компрьютера
+	PC pc;							// Створення комп'ютера
 
-	pc.name = "My computer";		// Задание имени компьютера
-	pc.State = PC::PCState::OFF;	// Переключение состояния компьютера в Выключен
+	pc.name = "My computer";		// Завдання імені комп'ютера
+	pc.State = PC::PCState::OFF;	// Зміна стану комп'ютера в Виключений
 
-	// Вывод состояния компьютера
-	cout << "Компьютер <" << pc.name;
+	// Виведення стану комп'ютера
+	cout << "Комп'ютер <" << pc.name;
 	switch (pc.State)
 	{
 	case PC::PCState::OFF:
-		cout << "> выключен" << "\n";
+		cout << "> виключений" << "\n";
 		break;
 	case PC::PCState::ON:
-		cout << "> работает" << "\n";
+		cout << "> працює" << "\n";
 		break;
 	case PC::PCState::SLEEP:
-		cout << "> спит" << "\n";
+		cout << "> спить" << "\n";
 		break;
 	default:
 		break;

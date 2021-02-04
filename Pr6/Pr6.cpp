@@ -1,19 +1,20 @@
 /*
-Пример 5
-Работники предприятия. 20 человек:
-- ФИО
+Приклад 6
+Створити структуру "Працівники підприємства":
+- ПІБ
 - оклад
-- стаж работы
-Вывести:
-Сотрудников с минимальной заработной платой
+- стаж роботи
+Є інформація про 20 працівників
+Написати функцію виведення співробітників з мінімальною заробітною платою
 */
 
 #include <iostream>	// std::cout
 #include <string>	// std::string, std::to_string
+#include <Windows.h>
 
 using namespace std;
 
-const int N = 20;		// Количество работников
+const int N = 20;		// Кількість працівників
 
 struct Employee
 {
@@ -22,7 +23,7 @@ struct Employee
 	int work_exp;
 };
 
-// Функци заполнения массива работников
+// Функція заповнення масиву працівників
 void inputWokers(Employee workers[], int N)
 {
 	for (int i = 0; i < N; i++)
@@ -37,13 +38,13 @@ void printInformation(Employee workers[], int N)
 {
 	int min = INT_MAX;
 
-	// Поиск минимальной зар.платы
+	// Пошук мінімальної зарплати
 	for (int i = 0; i < N; i++)
 	{
 		if (workers[i].salary < min) min = workers[i].salary;
 	}
-	// Вывод сотрудников с мин зар.платой
-	cout << "Сотридник/и с минимальной заработной платой:" << "\n";
+	// Висновок співробітників з мін зарплатою
+	cout << "Співробітник/и з мінімальною заробітною платою:" << "\n";
 	for (int i = 0; i < N; i++)
 	{
 		if (workers[i].salary == min)
@@ -55,16 +56,17 @@ void printInformation(Employee workers[], int N)
 
 int main()
 {
-	setlocale(LC_ALL, "ru");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
 
 	Employee workers[N];
 
 	while (true)
 	{
-		// Задание исходных данных
+		// Завдання вихідних даних
 		inputWokers(workers, N);
 
-		// Вывод информации
+		// Виведення інформації
 		printInformation(workers, N);
 
 		system("pause");
