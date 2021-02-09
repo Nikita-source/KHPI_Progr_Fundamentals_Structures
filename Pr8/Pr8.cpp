@@ -11,9 +11,7 @@
 #include <iostream>	// std::cout
 #include <string>	// std::string, std::to_string
 #include <Windows.h>
-
 using namespace std;
-
 #define N 20		// Кількість студентів
 #define M 5			// Кількість дисциплін в сесії
 
@@ -34,11 +32,15 @@ void inputRoll(Student roll[])
 		// Створення унікального імені
 		bool no_unique = true;
 		do {
-			roll[i].name = "StName" + to_string(rand() % N + 1);
+			roll[i].name = "StName" 
+							+ to_string(rand() % N + 1);
 			for (int j = 0; j < N; j++)
 			{
-				if (i != j && roll[i].name == roll[j].name) { no_unique = true; break; }
-				else no_unique = false;
+				if (i != j && 
+					roll[i].name == roll[j].name){
+				 no_unique = true; 
+				 break; 
+				} else no_unique = false;
 			}
 		} while (no_unique);
 
@@ -46,10 +48,13 @@ void inputRoll(Student roll[])
 		roll[i].averageMark = 0;
 		for (int j = 0; j < M; j++)
 		{
-			roll[i].marks[j] = rand() % 3 + 3;			// 3, 4, 5
-			roll[i].averageMark += roll[i].marks[j];	// Підсумовування всіх балів
+			// 3, 4, 5
+			roll[i].marks[j] = rand() % 3 + 3;
+			// Підсумовування всіх балів
+			roll[i].averageMark += roll[i].marks[j];
 		}
-		roll[i].averageMark /= M;						// Розрахунок середнього бала
+		// Розрахунок середнього бала
+		roll[i].averageMark /= M;
 	}
 
 	// Друк відомості
@@ -74,7 +79,8 @@ float maxAverageMark(Student roll[])
 	float max = 0.;
 	for (int i = 0; i < N; i++)
 	{
-		if (roll[i].averageMark > max) max = roll[i].averageMark;
+		if (roll[i].averageMark > max) 
+			max = roll[i].averageMark;
 	}
 	return max;
 }
@@ -93,19 +99,24 @@ int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-
-	Student roll[N];	// Оголошення масиву студентів
+	// Оголошення масиву студентів
+	Student roll[N];
 
 	while (true)
 	{
-		inputRoll(roll);	// Створення масиву студентів - створення відомості
+		// Створення масиву студентів, 
+		//створення відомості
+		inputRoll(roll);
 
 		// 1 Пошук максимального середнього бала
 		float maxAverMark = maxAverageMark(roll);
-		cout << "Максимальний середній бал = " << maxAverMark << "\n";
+		cout << "Максимальний середній бал = ";
+		cout << maxAverMark << "\n";
 
-		// 2 Знаходження кращого студента по максимальному сер. балу
-		cout << "Кращий студент : " << leader(roll, maxAverMark) << "\n";
+		// 2 Знаходження кращого студента 
+		//по максимальному сер. балу
+		cout << "Кращий студент : ";
+		cout << leader(roll, maxAverMark) << "\n";
 
 		system("pause");
 		system("cls");
